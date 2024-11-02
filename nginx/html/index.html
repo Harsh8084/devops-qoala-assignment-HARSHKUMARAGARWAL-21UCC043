@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Info</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("http://python_app:8000/")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("ip").innerText = data.user_ip;
+                    document.getElementById("mac").innerText = data.mac_address;
+                    document.getElementById("username").innerText = data.username;
+                    document.getElementById("timestamp").innerText = data.timestamp;
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+    </script>
+</head>
+
+<body>
+    <p><b>IP Address:</b> <span id="ip"></span></p>
+    <p><b>MAC Address:</b> <span id="mac"></span></p>
+    <p><b>Username:</b> <span id="username"></span></p>
+    <p><b>Timestamp:</b> <span id="timestamp"></span></p>
+    <br>
+    <h3>Assignment completed successfully!</h3>
+</body>
+
+</html>
